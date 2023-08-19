@@ -12,13 +12,13 @@ export class FormComponent implements OnInit {
 
   constructor() {
     this.userForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      key: new FormControl('', [Validators.minLength(3)]),
-      email: new FormControl('', [Validators.email]),
-      pass: new FormControl('', [Validators.minLength(8)]),
-      curp: new FormControl('', [Validators.minLength(18), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
-      rfc: new FormControl('', [Validators.minLength(13), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
-      nss: new FormControl('', [Validators.minLength(11), Validators.pattern(/^[0-9]*$/)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      key: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      curp: new FormControl('', [Validators.required, Validators.minLength(18), Validators.maxLength(18), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+      rfc: new FormControl('', [Validators.required, Validators.minLength(13), Validators.maxLength(13), Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+      nss: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern(/^[0-9]*$/)]),
     });
     // set uppercase to curp
     this.curpControl.valueChanges.subscribe((value) => {
@@ -26,7 +26,8 @@ export class FormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   get nameControl() { return this.userForm.get('name') as FormControl; }
   get keyControl() { return this.userForm.get('key') as FormControl; }
@@ -41,9 +42,7 @@ export class FormComponent implements OnInit {
   }
 
   simulateRequets() {
-    setTimeout(() => {
 
-    }, 500);
   }
 
 }

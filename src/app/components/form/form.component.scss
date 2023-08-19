@@ -23,6 +23,10 @@ form {
     border: solid 1px #ccc;
     border-radius: 5px;
     letter-spacing: 1px;
+    &:focus {
+      outline: none;
+      // border: solid 1px rgb(53, 153, 96);
+    }
   }
   label {
     margin-bottom: 5px;
@@ -33,11 +37,15 @@ form {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    font-size: 0.8rem;
-    color: red;
+    font-size: 0.9rem;
+    color: rgb(230, 80, 80);
+    span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
   }
 }
-.valid-control {
+.valid-input {
   border: solid 1px rgb(53, 153, 96) !important;
 }
 .actions {
